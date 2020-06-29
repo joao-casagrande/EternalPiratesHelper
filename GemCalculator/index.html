@@ -3,101 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste</title>
+    <title>Gem Calculator</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src="style.css"></script>
 </head>
 <body>
-    <div class="input-group mb-3">
-        
-    </div>    
-    
-    <div class="input-group mb-3">
-        <input id="lvl" type="number" class="form-control" placeholder="Gem Level" aria-label="Gem Level" aria-describedby="basic-addon2">
-        <input id="start_lvl" type="number" value="0" class="form-control" placeholder="Starting Gem Level" aria-label="Starting Gem Level" aria-describedby="basic-addon2">
-        <select class="custom-select" id="gems">
-            <option value="null" selected>Choose...</option>
-            <option value="fiery_gem">Fiery Gem
-            <option value="furious_gem">Furious Gem
-            <option value="explosive_gem">Explosive Gem
-            <option value="lustrious_gem">Lustrious Gem
-            <option value="glowing_gem">Glowing Gem
-            <option value="shining_gem">Shining Gem
-            <option value="shadow_gem">Shadow Gem
-            <option value="spirit_gem">Spirit Gem
-            <option value="gem_of_the_wind">Gem of the Wind
-            <option value="gem_of_striking">Gem of Striking
-            <option value="gem_of_colossus">Gem of Colossus
-            <option value="gem_of_rage">Gem of Rage
-            <option value="gem_of_soul">Gem of Soul
-            <option value="yellow_jade">Yellow Jade
-            <option value="red_jade">Red Jade
-            <option value="green_jade">Green Jade
-            <option value="chiatans_aura">Chiatan's Aura
-            <option value="locks_hit">Lock's Hit
-            <option value="bings_dodging">Bing's Dodging
-            <option value="fengs_defense">Feng's Defense
-            <option value="sharks_strengthening">Shark's Strengthening
-
-        </select>
-        <div class="input-group-append">
-            <button id="ok" class="btn btn-outline-secondary" type="button">Button</button>
-        </div>
-    </div>
-    
-    <div>
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Lv</th>
-                  <th scope="col">Qtd</th>
-                  <th scope="col" >Total Ref Gem</th>
-                  <th scope="col" id="gem_name"></th>
-                  
-                  
-                </tr>
-              </thead>
-
-              <tbody id="lvs">
-                
-                
-                  
-              </tbody>
-            
+	<div class="container">
+		<div class="row justify-content-center">
+			<h1>Gem Calculator</h1>
+			
+		 </div>
 
 
-        </table>
+		<div class="input-group mb-3">
+			
+		</div>    
+		
+		<div class="input-group mb-3">
+			<input id="lvl" type="number" class="form-control" placeholder="Gem Level" aria-label="Gem Level" aria-describedby="basic-addon2">
+			<input id="start_lvl" type="number" value="0" class="form-control" placeholder="Starting Gem Level" aria-label="Starting Gem Level" aria-describedby="basic-addon2">
+			<select class="custom-select" id="gems">
+				<option value="null" selected>Choose...</option>
+				<option value="fiery_gem">Fiery Gem
+				<option value="furious_gem">Furious Gem
+				<option value="explosive_gem">Explosive Gem
+				<option value="lustrious_gem">Lustrious Gem
+				<option value="glowing_gem">Glowing Gem
+				<option value="shining_gem">Shining Gem
+				<option value="shadow_gem">Shadow Gem
+				<option value="spirit_gem">Spirit Gem
+				<option value="gem_of_the_wind">Gem of the Wind
+				<option value="gem_of_striking">Gem of Striking
+				<option value="gem_of_colossus">Gem of Colossus
+				<option value="gem_of_rage">Gem of Rage
+				<option value="gem_of_soul">Gem of Soul
+				<option value="yellow_jade">Yellow Jade
+				<option value="red_jade">Red Jade
+				<option value="green_jade">Green Jade
+				<option value="chiatans_aura">Chiatan's Aura
+				<option value="locks_hit">Lock's Hit
+				<option value="bings_dodging">Bing's Dodging
+				<option value="fengs_defense">Feng's Defense
+				<option value="sharks_strengthening">Shark's Strengthening
 
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Cumulative Quantity</th>
-                  <th scope="col">Cumulative Ref Amount</th>
-                  <th scope="col" id="cum_gem_amount"></th>
-				  <th scope="col">Total</th>
-                  
-                </tr>
-              </thead>
+			</select>
+			<div class="input-group-append">
+				<button id="ok" class="btn btn-outline-secondary" type="button">Button</button>
+			</div>
+		</div>
+		
+		<div>
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+					  <th scope="col">Lv</th>
+					  <th scope="col">Qtd</th>
+					  <th scope="col" >Total Ref Gem</th>
+					  <th scope="col" id="gem_name"></th>
+					  
+					  
+					</tr>
+				  </thead>
 
-              <tbody>
-                <tr id="cum">
-                   
-                    
-                </tr>
-                
-                  
-              </tbody>
-            
+				  <tbody id="lvs">
+					
+					
+					  
+				  </tbody>
+				
 
 
-        </table>
+			</table>
+
+			<table class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+					  <th scope="col">Cumulative Quantity</th>
+					  <th scope="col">Cumulative Ref Amount</th>
+					  <th scope="col" id="cum_gem_amount"></th>
+					  <th scope="col">Total</th>
+					  
+					</tr>
+				  </thead>
+
+				  <tbody>
+					<tr id="cum">
+					   
+						
+					</tr>
+					
+					  
+				  </tbody>
+				
+
+
+			</table>
 
 
 
 
-    </div>
-
+		</div>
+	</div>
 
     
 
