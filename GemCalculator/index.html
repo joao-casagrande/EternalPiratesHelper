@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="style.css"></script>
+</head>
+<body>
+    <div class="input-group mb-3">
+        
+    </div>    
+    
+    <div class="input-group mb-3">
+        <input id="lvl" type="number" class="form-control" placeholder="Gem Level" aria-label="Gem Level" aria-describedby="basic-addon2">
+        <input id="start_lvl" type="number" value="0" class="form-control" placeholder="Starting Gem Level" aria-label="Starting Gem Level" aria-describedby="basic-addon2">
+        <select class="custom-select" id="gems">
+            <option value="null" selected>Choose...</option>
+            <option value="fiery_gem">Fiery Gem
+            <option value="furious_gem">Furious Gem
+            <option value="explosive_gem">Explosive Gem
+            <option value="lustrious_gem">Lustrious Gem
+            <option value="glowing_gem">Glowing Gem
+            <option value="shining_gem">Shining Gem
+            <option value="shadow_gem">Shadow Gem
+            <option value="spirit_gem">Spirit Gem
+            <option value="gem_of_the_wind">Gem of the Wind
+            <option value="gem_of_striking">Gem of Striking
+            <option value="gem_of_colossus">Gem of Colossus
+            <option value="gem_of_rage">Gem of Rage
+            <option value="gem_of_soul">Gem of Soul
+            <option value="yellow_jade">Yellow Jade
+            <option value="red_jade">Red Jade
+            <option value="green_jade">Green Jade
+            <option value="chiatans_aura">Chiatan's Aura
+            <option value="locks_hit">Lock's Hit
+            <option value="bings_dodging">Bing's Dodging
+            <option value="fengs_defense">Feng's Defense
+            <option value="sharks_strengthening">Shark's Strengthening
+
+        </select>
+        <div class="input-group-append">
+            <button id="ok" class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+    </div>
+    
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Lv</th>
+                  <th scope="col">Qtd</th>
+                  <th scope="col" >Total Ref Gem</th>
+                  <th scope="col" id="gem_name"></th>
+                  
+                  
+                </tr>
+              </thead>
+
+              <tbody id="lvs">
+                
+                
+                  
+              </tbody>
+            
+
+
+        </table>
+
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                  <th scope="col">Cumulative Quantity</th>
+                  <th scope="col">Cumulative Ref Amount</th>
+                  <th scope="col" id="cum_gem_amount"></th>
+				  <th scope="col">Total</th>
+                  
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr id="cum">
+                   
+                    
+                </tr>
+                
+                  
+              </tbody>
+            
+
+
+        </table>
+
+
+
+
+    </div>
+
+
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function(){
+            json = {
+                "fiery_gem":  500000,
+                "furious_gem":  500000,
+                "explosive_gem":  500000,
+                "lustrious_gem":  500000,
+                "glowing_gem":  500000,
+                "shining_gem":  500000,
+                "shadow_gem":  500000,
+                "spirit_gem":  500000,
+                "gem_of_the wind":  3000000,
+                "gem_of_striking":  3000000,
+                "gem_of_colossus":  3000000,
+                "gem_of_rage":  3000000,
+                "gem_of_soul":  3000000,
+                "yellow_jade":  2500000,
+                "red_jade":  2500000,
+                "green_jade":  2500000,
+                "chiatans_aura":  2500000,
+                "locks_hit":  2500000,
+                "bings_dodging":  2500000,
+                "fengs_defense":  2500000,
+                "sharks_strengthening":  2500000
+            }
+            //console.log(json);
+
+
+
+
+        $('#ok').click(function(){
+            let lv = Number($('#lvl').val());
+            let start_lv = Number($('#start_lvl').val());
+            let gem = $("#gems option:selected").text();
+            let gem_val = $("#gems option:selected").val();
+
+
+            $('#gem_name').html('Total '+gem);
+            $('#cum_gem_amount').html('Cumulative '+ gem +' Amount ');
+            
+            
+            
+            let html = ''
+            let cum_qtd = 0;
+            
+
+
+
+            if(lv && lv>=1 && lv<=9 && gem_val!="null"){
+
+                if(start_lv<lv){
+                    for(let i = start_lv; i<lv; i++){
+                        let qtd = Math.pow(2, i);
+                        let temp = ' \
+                        <tr>\
+                        <td>'+(i+1).toString()+'</td>'+
+                        '<td>'+qtd.toString()+'</td>'+
+                        '<td>'+numberWithCommas(qtd*1500000)+'</td>'+
+                        '<td>'+numberWithCommas(qtd*json[gem_val])+'</td>'+
+                        '</tr>';
+                        
+                        cum_qtd = cum_qtd + qtd;
+
+
+                        html+=temp;
+                        temp = ''
+
+                    }
+
+                    let cum_ref = 1500000*cum_qtd;
+                    let cum_gem = json[gem_val]*cum_qtd;
+					let total = cum_gem+cum_ref;
+
+                    let html2 = 
+                    '<td>'+numberWithCommas(cum_qtd)+'</td>'+
+                    '<td>'+numberWithCommas(cum_ref)+'</td>'+
+                    '<td>'+numberWithCommas(cum_gem)+'</td>'+
+					'<td>'+numberWithCommas(total)+'</td>'+
+
+                    $('#lvs').html(html);
+                    $('#cum').html(html2);
+
+                } else{
+                    $('#lvs').html('Error: starting level must be lower than the target level');
+                    $('#cum').html('Error: starting level must be lower than the target level');
+
+
+                }
+
+
+            } else{
+                $('#lvs').html('Error: no number or number too high');
+                $('#cum').html('Error: no number or number too high');
+
+            }
+            
+            
+            
+
+
+
+
+
+
+
+        })
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        $("#lvl, #start_lvl, #gems").keyup(function(event) {
+            console.log('teste');
+            if (event.keyCode === 13) {
+                $("#ok").click();
+            }
+        });
+        
+
+    })
+        
+    </script>
+
+</body>
+</html>
